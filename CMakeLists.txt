@@ -71,6 +71,35 @@ target_include_directories(QtWebApp PUBLIC
 target_link_libraries(QtWebApp Qt5::Core Qt5::Network)
 
 add_executable(squeezer
+    src/tasks/SequentialTask.cpp
+    src/tasks/SequentialTask.h
+    src/tasks/Task.cpp
+    src/tasks/Task.h
+
+    src/net/Validator.h
+    src/net/Sink.h
+    src/net/NetJob.h
+    src/net/NetJob.cpp
+    src/net/NetAction.h
+    src/net/Mode.h
+    src/net/FileSink.h
+    src/net/FileSink.cpp
+    src/net/Download.h
+    src/net/Download.cpp
+    src/net/ChecksumValidator.h
+    src/net/ByteArraySink.h
+
+    src/mojang/PackageManifest.h
+    src/mojang/PackageManifest.cpp
+
+    src/pathmatcher/FSTreeMatcher.h
+    src/pathmatcher/IPathMatcher.h
+    src/pathmatcher/MultiMatcher.h
+    src/pathmatcher/RegexpMatcher.h
+
+    src/teamcity/BuildIndex.h
+    src/teamcity/BuildIndex.cpp
+
     src/controller/dumpcontroller.cpp
     src/controller/dumpcontroller.h
     src/controller/fileuploadcontroller.cpp
@@ -89,8 +118,15 @@ add_executable(squeezer
     src/main.cpp
     src/requestmapper.cpp
     src/requestmapper.h
+
+    src/FileSystem.cpp
+    src/FileSystem.h
+    src/Json.cpp
+    src/Json.h
+    src/QObjectPtr.h
 )
 target_link_libraries(squeezer QtWebApp)
+target_include_directories(squeezer PRIVATE src)
 
 install(TARGETS squeezer DESTINATION bin)
 install(DIRECTORY data/ DESTINATION .)
